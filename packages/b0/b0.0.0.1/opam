@@ -1,28 +1,23 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+synopsis: """Software construction and deployment kit"""
+maintainer: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
 authors: ["The b0 programmers"]
 homepage: "https://erratique.ch/software/b0"
 doc: "https://erratique.ch/software/b0/doc"
-license: ["ISC" "BSD2"]
-dev-repo: "git+https://erratique.ch/repos/b0.git#b00"
+dev-repo: "git+https://erratique.ch/repos/b0.git"
 bug-reports: "https://github.com/b0-system/b0/issues"
-tags: ["dev" "org:erratique" "org:b0-system" "build" ]
-depends:
-[
-  "ocaml" {>= "4.05.0" & < "4.12.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "0.9.0"}
-  "cmdliner" {build &>= "1.0.2"}
-]
-build:
-[[
-  "ocaml" "pkg/pkg.ml" "build" "--dev-pkg=true" {dev}
-]]
-
-synopsis: """Software construction and deployment kit"""
-description: """\
-
+license: ["ISC" "BSD2"]
+tags: ["dev" "org:erratique" "org:b0-system" "build"]
+depends: ["ocaml" {>= "4.08.0"}
+          "ocamlfind" {build}
+          "ocamlbuild" {build}
+          "topkg" {build & >= "1.0.3"}
+          "cmdliner" {build &>= "1.0.2"}]
+build: [["ocaml" "pkg/pkg.ml" "build" "--dev-pkg" "%{dev}%"]]
+url {
+  src: "https://erratique.ch/software/b0/releases/b0-0.0.1.tbz"
+  checksum: "sha512=7396fb2f0273e4d104c01f9a4e305c4a393ce5c31b6bde54ed3889f34b5cbc26ba41f19659a8c00eac2f4259e1cc5d336120ea094c27c1d20bb20d402dd24b3b"}
+description: """
 WARNING this package is unstable and work in progress, do not depend on it. 
 
 B0 describes software construction and deployments using modular and
@@ -32,8 +27,8 @@ B0 describes:
 
 * Build environments.
 * Software configuration, build and testing.
-* Source or built artefacts deployments.
-* Development life-cycle procedures and actions.
+* Source and binary deployments.
+* Software life-cycle procedures.
 
 B0 also provides the B00 build library which provides abitrary build
 abstraction with reliable and efficient incremental rebuilds. The B00
@@ -43,7 +38,3 @@ specific build systems.
 B0 is distributed under the ISC license. It depends on [cmdliner][cmdliner].
 
 [cmdliner]: https://erratique.ch/software/cmdliner"""
-url {
-archive: "https://erratique.ch/software/b0/releases/b0-0.0.1.tbz"
-checksum: "51ee1d66acc4d7f87bdceac1341b7711"
-}
